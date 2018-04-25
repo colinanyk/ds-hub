@@ -27,6 +27,8 @@ app.param('id', function (req, res, next, id) {
 });
 
 
-app.get('/', (req, res) => res.send('DeStash Hub'));
+app.get('/', function (req, res) {
+	return res.status(200).send('DS Hub');
+}) ;
 
 app.listen(port, () => console.log('Example app listening on port ' + port));

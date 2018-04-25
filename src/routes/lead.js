@@ -1,8 +1,7 @@
 'use strict';
-
-import Lead from '../controllers/lead-controller';
+import Lead from '../controllers/lead';
 
 export default (app) => {
 	app.post('/api/v1/lead/create', Lead.create);
-	app.get('/api/v1/lead/read', Lead.read);
+	app.get('/api/v1/lead/read/:id', Lead.read);
 }

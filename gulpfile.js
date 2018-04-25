@@ -21,14 +21,14 @@ gulp.task('libs', function(){
 		.pipe(gulp.dest('dist/server/libs'));
 });
 
-gulp.task('npm:install', function() {
-	return gulp.src(['package.json'])
-		.pipe(install({
-			allowRoot: true
-		}))
-		.pipe(print())
-		.pipe(gulp.dest('dist/server'));
-});
+// gulp.task('npm:install', function() {
+// 	return gulp.src(['package.json'])
+// 		.pipe(install({
+// 			allowRoot: true
+// 		}))
+// 		.pipe(print())
+// 		.pipe(gulp.dest('dist/server'));
+// });
 
 // gulp.task('yarn', function() {
 // 	return gulp.src(['./package.json', './yarn.lock'])
@@ -50,11 +50,16 @@ gulp.task('env:dev', function() {
 		.pipe(gulp.dest('dist/server'));
 });
 
+gulp.task('utilityFiles', function() {
+	return gulp.src(['src/**/*.json'])
+		.pipe(print())
+		.pipe(gulp.dest('dist/server'))
+});
 /*
  Gulp tasks to build backend & frontend (Refer above for frontend) and place builds in  dist directory
  */
 
-gulp.task('build:server', ['libs', 'yarn', 'env:dev'], function() {
+gulp.task('build:server', ['libs', 'yarn', 'env:dev', 'utilityFiles'], function() {
 	return gulp.src(['src/**/*.js'])
 		.pipe(print())
 		.pipe(babel())
